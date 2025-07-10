@@ -7,7 +7,7 @@ const app = express();
 
 app.use(express.json());
 
-app.all("*", (req, res) => {
+pp.use("*", (req, res) => {
   return res.status(404).json({
     success: false,
     message: `Page not found: ${req.originalUrl}`,
