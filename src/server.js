@@ -7,8 +7,11 @@ const app = express();
 
 app.use(express.json());
 
-app.use("*", async (req, res) => {
-  return res.status(404).send({ success: false, message: "Page not found" });
+app.all("*", (req, res) => {
+  return res.status(404).json({
+    success: false,
+    message: `Page not found: ${req.originalUrl}`,
+  });
 });
 
 async function start() {
